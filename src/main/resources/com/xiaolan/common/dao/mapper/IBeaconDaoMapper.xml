@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaolan.common.dao.IBeaconDao">
+    <!-- 保存数据 -->
+    <insert id="save" parameterType="com.xiaolan.common.bean.BeaconORM">
+        <selectKey keyProperty="uuid" resultType="long" order="BEFORE">
+            select IFNULL(max(uuid),0)+1 from beacon_info
+        </selectKey>
+        insert into beacon_info
+        (uuid,addr,major,measure_power,minor,latitude,longitude)
+        values(
+        #{uuid,jdbcType=BIGINT}
+        ,#{addr,jdbcType=VARCHAR}
+        ,#{major,jdbcType=DOUBLE}
+        ,#{measure_power,jdbcType=DOUBLE}
+        ,#{minor,jdbcType=DOUBLE}
+        ,#{latitude,jdbcType=DOUBLE}
+        ,#{longitude,jdbcType=DOUBLE}
+        )
+    </insert>
+    <!-- 更新数据 -->
+    <update id="update" parameterType="com.xiaolan.common.bean.BeaconORM">
+        update beacon_info
+        set addr = #{addr,jdbcType=VARCHAR}
+        ,major=#{major,jdbcType=DOUBLE}
+        ,measure_power=#{measure_power,jdbcType=DOUBLE}
+        ,minor=#{minor,jdbcType=DOUBLE}
+        ,latitude=#{latitude,jdbcType=DOUBLE}
+		,longitude=#{longitude,jdbcType=DOUBLE}
+		where uuid = #{uuid}
+	</update>
+    <!-- 删除数据 -->
+    <delete id="delete" parameterType="com.xiaolan.common.bean.BeaconORM">
+		delete from beacon_info where uuid = #{uuid}
+	</delete>
+    <!-- 查询全部片段 -->
+    <sql id="selectAll">
+		select * from beacon_info b
+	</sql>
+    <!-- 获取单个数据 -->
+    <select id="findOne" parameterType="com.xiaolan.common.bean.BeaconORM"
+            resultType="com.xiaolan.common.bean.BeaconORM">
+		select * from beacon_info b
+		where uuid = #{uuid}
+	</select>
+    <!-- 获取所有数据 -->
+    <select id="list" resultType="BeaconORM">
+        <include refid="selectAll"/>
+    </select>
+    <select id="query" parameterType="com.xiaolan.common.dao.query.BaseQuery"
+            resultType="com.xiaolan.common.bean.BeaconORM">
+        <include refid="selectAll"/>
+        ${querySql}
+    </select>
+    <!-- mysql分页 -->
+    <select id="queryPage" parameterType="com.xiaolan.common.dao.query.BaseQuery"
+            resultType="com.xiaolan.common.bean.BeaconORM">
+		select * from beacon_info b
+		${querySql} limit #{beginIndex} , #{pageSize}
+	</select>
+    <select id="queryPageCount" parameterType="com.xiaolan.common.dao.query.BaseQuery" resultType="int">
+		select count(1) from beacon_info b
+		${querySql}
+	</select>
+    <!-- oracle分页 -->
+    <select id="oraclequeryPage" parameterType="com.xiaolan.common.dao.query.BaseQuery"
+            resultType="com.xiaolan.common.bean.BeaconORM">
+		SELECT * FROM ( SELECT A.*, ROWNUM RN FROM (
+		select * from beacon_info b ${querySql}
+		) A WHERE ROWNUM <![CDATA[<= ]]>
+		#{endIndex} ) WHERE RN >= #{beginIndexOracle}
+	</select>
+    <select id="oraclequeryPageCount" parameterType="com.xiaolan.common.dao.query.BaseQuery" resultType="int">
+		select count(1) from beacon_info b ${querySql}
+	</select>
+</mapper>
