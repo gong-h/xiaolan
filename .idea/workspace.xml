@@ -721,7 +721,7 @@
       <updated>1496627875476</updated>
       <workItem from="1496627876874" duration="1255000" />
       <workItem from="1496660733025" duration="984000" />
-      <workItem from="1496661756441" duration="5681000" />
+      <workItem from="1496661756441" duration="5810000" />
     </task>
     <task id="LOCAL-00001" summary="spring + mybatis&#10;">
       <created>1496664245917</created>
@@ -744,11 +744,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496668373484</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="spring + mybatis&#10;">
+      <created>1496668482494</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1496668482494</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7920000" />
+    <option name="totallyTimeSpent" value="8049000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
