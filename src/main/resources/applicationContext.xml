@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 自动扫描  @Controller-->
+    <context:component-scan base-package="com.xiaolan"/>
+    <!-- 加载properties文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties   "/>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${datasourceA.driverClassName}"/>
+        <property name="url" value="${datasourceA.url}"/>
+        <property name="username" value="${datasourceA.username}"/>
+        <property name="password" value="${datasourceA.password}"/>
+        <property name="initialSize" value="${datasourceA.initialSize}"/><!--初始化连接 -->
+        <property name="maxActive" value="${datasourceA.maxActive}"/><!--最大连接数量 -->
+        <property name="maxIdle" value="${datasourceA.maxIdle}"/><!--最大空闲连接 -->
+        <property name="minIdle" value="${datasourceA.minIdle}"/><!--最小空闲连接 -->
+        <property name="maxWait" value="${datasourceA.maxWait}"/><!--超时等待时间以毫秒为单位 1000等于60秒 -->
+        <property name="removeAbandoned" value="${datasourceA.removeAbandoned}"/><!--是否自动回收超时连接false -->
+        <property name="removeAbandonedTimeout" value="${datasourceA.removeAbandonedTimeout}"/><!--超时时间(以秒数为单位) -->
+        <property name="validationQuery" value="${datasourceA.validationQuery}"/>
+        <property name="testOnBorrow" value="${datasourceA.testOnBorrow}"></property>
+        <property name="testWhileIdle" value="${datasourceA.testWhileIdle}"></property>
+    </bean>
+    <!-- Mybatis文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 映射文件路径 -->
+        <!-- 自动扫描mapping.xml文件 -->
+        <!-- <property name="mapperLocations" value="classpath:com/xiaolan/common/dao/mapper/*.xml"></property>-->
+        <property name="mapperLocations">
+            <array>
+                <value>classpath:com/xiaolan/common/dao/mapper/*.xml</value>
+            </array>
+        </property>
+    </bean>
+ 
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.xiaolan.common.dao"/>
+        <!-- <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" /> -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+</beans>
+
+
+
