@@ -1,4 +1,4 @@
-package com.xiaolan.common.dao;
+package com.xiaolan;
 
 /**
  * @author fiendo
