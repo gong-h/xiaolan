@@ -2,8 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiaolan.common.dao.IBeaconDao">
+    <cache
+            eviction="FIFO"
+            flushInterval="60000"
+            size="512"
+            readOnly="true"/>
     <!-- 保存数据 -->
-    <insert id="save" parameterType="com.xiaolan.common.bean.BeaconORM">
+    <insert id="save" parameterType="com.xiaolan.common.bean.BeaconORM" flushCache="true" >
         <selectKey keyProperty="uuid" resultType="long" order="BEFORE">
             select IFNULL(max(uuid),0)+1 from beacon_info
         </selectKey>
@@ -27,25 +32,25 @@
         ,measure_power=#{measure_power,jdbcType=DOUBLE}
         ,minor=#{minor,jdbcType=DOUBLE}
         ,latitude=#{latitude,jdbcType=DOUBLE}
-		,longitude=#{longitude,jdbcType=DOUBLE}
-		where uuid = #{uuid}
-	</update>
+        ,longitude=#{longitude,jdbcType=DOUBLE}
+        where uuid = #{uuid}
+    </update>
     <!-- 删除数据 -->
     <delete id="delete" parameterType="com.xiaolan.common.bean.BeaconORM">
-		delete from beacon_info where uuid = #{uuid}
-	</delete>
+        delete from beacon_info where uuid = #{uuid}
+    </delete>
     <!-- 查询全部片段 -->
     <sql id="selectAll">
-		select * from beacon_info b
-	</sql>
+        select * from beacon_info b
+    </sql>
     <!-- 获取单个数据 -->
     <select id="findOne" parameterType="com.xiaolan.common.bean.BeaconORM"
             resultType="com.xiaolan.common.bean.BeaconORM">
-		select * from beacon_info b
-		where uuid = #{uuid}
-	</select>
+        select * from beacon_info b
+        where uuid = #{uuid}
+    </select>
     <!-- 获取所有数据 -->
-    <select id="list" resultType="BeaconORM">
+    <select id="list" resultType="BeaconORM" >
         <include refid="selectAll"/>
     </select>
     <select id="query" parameterType="com.xiaolan.common.dao.query.BaseQuery"
