@@ -1,6 +1,7 @@
 package com.xiaolan.common.dao;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author dsir
@@ -44,5 +45,5 @@ public interface IBaseDao {
      *
      * @return
      */
-    List list() throws Exception;
+    List<Map<String,Object>> list() throws Exception;
 }

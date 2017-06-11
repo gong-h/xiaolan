@@ -1,12 +1,14 @@
 package com.xiaolan.common.bean;
 
 import com.xiaolan.common.dao.query.BaseQuery;
+import org.apache.ibatis.type.Alias;
 
 /**
  * Beacon对象
  *
  * @author Administrator
  */
+@Alias("beacon2")
 public class BeaconORM extends BaseORM {
     /**
      *
