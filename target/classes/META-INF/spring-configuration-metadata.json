@@ -1,0 +1,59 @@
+{
+  "hints": [],
+  "properties": [
+    {
+      "sourceType": "com.xiaolan.config.WebSecurityConfigSettings",
+      "name": "security.default-success-url",
+      "defaultValue": "\/index",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.xiaolan.config.WebSecurityConfigSettings",
+      "name": "security.failure-url",
+      "defaultValue": "\/login?error",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.xiaolan.config.WebSecurityConfigSettings",
+      "name": "security.ignoring-matchers",
+      "defaultValue": "",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.xiaolan.config.WebSecurityConfigSettings",
+      "name": "security.login-page",
+      "defaultValue": "\/login",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.xiaolan.config.WebSecurityConfigSettings",
+      "name": "security.logout-success-url",
+      "defaultValue": "\/login",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.xiaolan.config.WebSecurityConfigSettings",
+      "name": "security.logout-url",
+      "defaultValue": "\/logout",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.xiaolan.config.WebSecurityConfigSettings",
+      "name": "security.permit-url",
+      "defaultValue": "\/home",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.xiaolan.config.WebSecurityConfigSettings",
+      "name": "security.token-validity-seconds",
+      "type": "java.lang.String"
+    }
+  ],
+  "groups": [
+    {
+      "sourceType": "com.xiaolan.config.WebSecurityConfigSettings",
+      "name": "security",
+      "type": "com.xiaolan.config.WebSecurityConfigSettings"
+    }
+  ]
+}

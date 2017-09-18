@@ -1,5 +1,6 @@
 package com.xiaolan.authority.service;
 
+
 import com.xiaolan.authority.domain.Role;
 
 import java.util.List;
@@ -41,6 +42,15 @@ public interface IRoleService {
 	 * @throws Exception
 	 */
 	Role findRole(Role role);
+
+	/**
+	 * 查询角色
+	 *
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	Role findById(Integer id);
 
 	/**
 	 * 查询所有角色
