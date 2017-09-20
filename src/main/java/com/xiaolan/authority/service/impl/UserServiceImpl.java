@@ -88,8 +88,11 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),user.getAuthorities());
-        return userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("不存在该用户");
+        }
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getAuthorities());
     }
 
     @Override

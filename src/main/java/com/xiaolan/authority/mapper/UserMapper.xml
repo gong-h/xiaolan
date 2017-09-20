@@ -1,6 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xiaolan.authority.mapper.UserMapper">
-    <select id="getByUsernameFromMapper" parameterType="String" resultType="User">
+    <select id="getByUsernameFromMapper" parameterType="String" resultType="com.xiaolan.authority.domain.User">
         select * from auth_user where username = #{username}
     </select>
 </mapper>

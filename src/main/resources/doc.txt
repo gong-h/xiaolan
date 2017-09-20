@@ -1,8 +1,20 @@
-http://blog.csdn.net/code__code/article/details/53885510
-
-
 http://www.thymeleaf.org/
-
-https://github.com/nl101531/JavaWEB
 #spring boot数据源切换
 http://blog.csdn.net/catoop/article/details/50575038
+#自动编译
+http://blog.csdn.net/aqzwss/article/details/45667885
+
+#spring boot 热部署
+选择Edit -> Macros -> Start Macro Recording
+打开一个.java文件，编辑一下文件，比如加个回车键
+按Ctrl+S键
+按Ctrl+Shift+F9键
+选择Edit -> Macros -> Stop Macro Recording，在弹出框中输入“Save & Compile”
+选择File -> Setting -> Keymap,在搜索框中输入“Save & Compile”，选中“Mocros”下的“Save & Compile”,右键选择“Add Keyboard Shortcut”,按Ctrl+S键，点击“OK”，之后点击“Remove”
+点击Setting页面下的“OK”。
+
+
+#图片处理
+http://www.cnblogs.com/miskis/p/5500822.html
+#文件上传与下载
+http://www.cnblogs.com/studyCenter/p/6665171.html
