@@ -53,7 +53,10 @@
 					<div class="form-top">
 						<div class="form-top-left">
 							<h3>进入后台系统</h3>
-							<p>请输入用户名与密码:</p>
+							<p>
+								请输入用户名与密码:
+								<span th:if="${session.SPRING_SECURITY_LAST_EXCEPTION}" class="text-danger" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}">有错误，请重试</span>
+							</p>
 						</div>
 						<div class="form-top-right">
 							<i class="fa fa-key"></i>
