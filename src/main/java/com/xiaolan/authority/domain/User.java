@@ -26,7 +26,7 @@ public class User implements UserDetails {
     private String username;
     @Column(name = "nickname", nullable = false, length = 36)
     private String nickname;// 用户昵称
-    @Column(name = "password", nullable = false, length = 40)
+    @Column(name = "password", nullable = false, length = 100)
     private String password;
     @Column(name = "status", nullable = false)
     private Integer status;// 状态
